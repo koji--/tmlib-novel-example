@@ -138,8 +138,8 @@ tm.define("tm.novel.Script", {
             var values = elm.split('=');
             var key = values[0];
             var value = values[1];
-            
-            if (!value.match(/[^0-9|\-]+/)) {
+
+            if (value.match(/^[+-]?[0-9]*[\.]?[0-9]+$/)) {
                 value = Number(value);
             }
             else if (value === "true") {
@@ -228,7 +228,7 @@ tm.novel.TAG_MAP = {
     "base": function(app) {
         var params = this.activeTask.params;
         
-        this.basePath = params.path;
+        this.basePath = params.path.format(this.variables);
         
         this.next();
     },
@@ -236,10 +236,10 @@ tm.novel.TAG_MAP = {
         this.lock();
         
         this.timeline.clear();
-        this.timeline.call(function() {
+        this.timeline.call(this.activeTask.params.time, function() {
             this.unlock();
             this.next();
-        }.bind(this), this.activeTask.params.time);
+        }.bind(this));
     },
     "alert": function(app) {
         console.log(this.activeTask.params.str);
@@ -268,6 +268,7 @@ tm.novel.TAG_MAP = {
         if (params.size !== undefined) la.fontSize = params.size;
         if (params.color !== undefined) la.fillStyle = params.color;
         if (params.face !== undefined) la.fontFamily = params.face;
+        if (params.lineSpace !== undefined) la.lineSpace = params.lineSpace;
         
         this.next();
     },
@@ -406,9 +407,22 @@ tm.novel.TAG_MAP = {
     },
     
     sound_play: function() {
+        var self = this;
         var params = this.activeTask.params;
-        tm.asset.Manager.get(params.name).clone().play();
-        this.next();
+        var sound = tm.asset.Manager.get(params.name).clone();
+
+        if (params.wait === true) {
+            this.lock();
+            sound.onended = function() {
+                self.unlock();
+                self.next();
+            };
+        }
+        else {
+            this.next();
+        }
+
+        sound.play();
     },
     music_play: function() {
         var params = this.activeTask.params;
@@ -580,6 +594,7 @@ tm.define("tm.novel.Element", {
         this.taskIndex = 0;
         this.lockFlag = false;
         this.chSpeed = 1;
+        this.variables = {};
         
         this.labelArea = tm.ui.LabelArea({
             text: "",
@@ -634,7 +649,16 @@ tm.define("tm.novel.Element", {
     finish: function() {
         this.set(this.script.tasks.length);
     },
-    
+
+    setVariable: function(key, value) {
+        this.variables[key] = value;
+        return this;
+    },
+
+    getVariable: function(key) {
+        return this.variables[key];
+    },
+
     addNovelElement: function(name, element, layerIndex) {
         if (layerIndex === undefined) layerIndex = 1;
         
