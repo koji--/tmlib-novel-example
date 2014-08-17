@@ -1,47 +1,78 @@
 
 // アセットをロード
-[load name=bg path=assets/bg.jpg]
+[load name=bg path=assets/toshokan_800_600.jpg]
 [load name=frame path=assets/frame.png]
-[load name=player path=assets/player.png]
+//[load name=player path=assets/player.png]
+[load name=player path=assets/female_smile_01.png]
 [load name=bgm path=assets/bgm.mp3]
 
 // 背景を表示
-[new name=bg type=tm.display.Sprite arg=bg originX=0 originY=0 width=465 height=465]
-[new name=frame layer=2 type=tm.display.Sprite arg=frame x=232 y=380 alpha=0.8]
+//[new name=bg type=tm.display.Sprite arg=bg originX=0 originY=0 width=465 height=465]
+[new name=bg type=tm.display.Sprite arg=bg originX=0 originY=0 width=800 height=600]
+//[new name=frame layer=2 type=tm.display.Sprite arg=frame x=232 y=380 alpha=0.8]
+[new name=frame layer=2 type=tm.display.Sprite arg=frame x=300 y=500 width=600 height=200 alpha=0.8]
 // 枠を表示
 
 // bgm を再生
 [music_play name=bgm]
 
 // フォントを指定
-[font color=#222]
+[font color=#222 size=20]
 
 *start
 
 // プレイヤーを表示
-[new name=player type=tm.display.Sprite arg=player x=225 y=250 scaleX=0.75 scaleY=0.75 alpha=0]
+//[new name=player type=tm.display.Sprite arg=player x=125 y=250 scaleX=0.75 scaleY=0.75 alpha=0]
+[new name=player type=tm.display.Sprite arg=player x=155 y=290 scaleX=1 scaleY=1 alpha=0]
 [anim name=player alpha=1 time=500]
 [wait time=1000]
 
-tmlib.novel.js は, tmlib.js でノベルゲームを
-簡単に作れるようにするためのプラグインだよ.[l]
+はい、こんにちはー。[r]
+tmlib.novel.jsの紹介、いきたいと思いますー。[l]
 [cm]
 
-まだ開発途中だけどわりと動いているよ.[r][l]
-キリキリスクリプトってやつに似せて作ってあるよ.[r][l]
-でも他にも色々やれるようになっていく予定だよ.[l]
+よろしく。[l]
 [cm]
 
-これからガンガン開発していくよ.[r][l]
-協力してくれると嬉しいな.[l]
+まかしときー。[r]
+えーと、ざっくり説明すると[l]
 [cm]
+
+[font size=24]
+『tmlib.novel.js は,[r]
+tmlib.js でノベルゲームを簡単に[r]
+作れるようにするためのプラグインだよ.』[r]
+（作者のサンプルより）[l]
+[font size=20]
+[cm]
+
+ふむふむ。[r]
+tmlibっていうのは？[l]
+[cm]
+
+えーと、tmlibっていうのは[l]
+[cm]
+
+[font size=24]
+『ゲームやツールを簡単に作る事ができる[r]
+JavaScript ライブラリだよ♪』[r]
+（公式ページより）[l]
+[font size=20]
+[cm]
+
+という感じです。[r]
+さくっとノベルゲームを作れるツール[r]
+ってことですねー[l]
+[cm]
+
+それではさようならー。[l]
 
 // プレイヤーを非表示
 [anim name=player alpha=0 time=500]
 [wait time=1000]
 [delete name=player]
+[delete name=frame]
 
-// *start タグにジャンプ
-[jump target=*start]
+[cm]
 
 [s]
