@@ -42,7 +42,7 @@ tm.define("MainScene", {
         elm.labelArea.width = 600;
         elm.labelArea.height = 300;
         elm.labelArea.x = 30;
-        elm.labelArea.y = 450;
+        elm.labelArea.y = 430;
 
         elm.ontaskfinish = function() {
             console.log("finish!");

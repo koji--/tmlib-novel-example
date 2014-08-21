@@ -4,7 +4,14 @@
 [load name=frame path=assets/frame.png]
 //[load name=player path=assets/player.png]
 [load name=player path=assets/female_smile_01.png]
-[load name=bgm path=assets/bgm.mp3]
+//[load name=bgm path=assets/bgm.mp3]
+[load name=bgm path=assets/bgm2.mp3]
+[load name=voice01 path=../assets/voice01.mp3]
+[load name=voice02 path=../assets/voice02.mp3]
+[load name=voice03 path=../assets/voice03.mp3]
+[load name=voice04 path=../assets/voice04.mp3]
+[load name=voice05 path=../assets/voice05.mp3]
+[load name=voice06 path=../assets/voice06.mp3]
 
 // 背景を表示
 //[new name=bg type=tm.display.Sprite arg=bg originX=0 originY=0 width=465 height=465]
@@ -23,56 +30,68 @@
 
 // プレイヤーを表示
 //[new name=player type=tm.display.Sprite arg=player x=125 y=250 scaleX=0.75 scaleY=0.75 alpha=0]
-[new name=player type=tm.display.Sprite arg=player x=155 y=290 scaleX=1 scaleY=1 alpha=0]
+[new name=player type=tm.display.Sprite arg=player x=155 y=300 scaleX=1 scaleY=1 alpha=0]
 [anim name=player alpha=1 time=500]
 [wait time=1000]
 
-はい、こんにちはー。[r]
-tmlib.novel.jsの紹介、いきたいと思いますー。[l]
+[sound_play name=voice01]
+「はい、こんにちはー。[r]
+　tmlib.novel.jsの紹介いきたいと思いますー。」
+[l]
 [cm]
 
 よろしく。[l]
 [cm]
 
-まかしときー。[r]
-えーと、ざっくり説明すると[l]
+[sound_play name=voice02]
+「まかしときー。[r]
+　えーと、ざっくり説明すると」
+[l]
 [cm]
 
+[sound_play name=voice03]
 [font size=24]
 『tmlib.novel.js は,[r]
-tmlib.js でノベルゲームを簡単に[r]
-作れるようにするためのプラグインだよ.』[r]
-（作者のサンプルより）[l]
+　tmlib.js でノベルゲームを簡単に[r]
+　作れるようにするためのプラグインだよ.』[r]
+（作者のサンプルより）
+[l]
 [font size=20]
 [cm]
 
-ふむふむ。[r]
+ふむふむ[r]
 tmlibっていうのは？[l]
 [cm]
 
-えーと、tmlibっていうのは[l]
+[sound_play name=voice04]
+「えーと、tmlibっていうのは」
+[wait time=3000]
 [cm]
 
+[sound_play name=voice05]
 [font size=24]
 『ゲームやツールを簡単に作る事ができる[r]
-JavaScript ライブラリだよ♪』[r]
-（公式ページより）[l]
+　JavaScript ライブラリだよ♪』[r]
+（公式ページより）
+[l]
 [font size=20]
 [cm]
 
-という感じです。[r]
 さくっとノベルゲームを作れるツール[r]
-ってことですねー[l]
+ってことだね。[l]
 [cm]
 
-それではさようならー。[l]
+[sound_play name=voice06]
+「それではさようならー。」
+[l]
+[cm]
 
 // プレイヤーを非表示
 [anim name=player alpha=0 time=500]
 [wait time=1000]
 [delete name=player]
-[delete name=frame]
 
-[cm]
+[l]
+[jump target=*start]
 
 [s]
