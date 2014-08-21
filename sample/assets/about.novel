@@ -6,12 +6,12 @@
 [load name=player path=assets/female_smile_01.png]
 //[load name=bgm path=assets/bgm.mp3]
 [load name=bgm path=assets/bgm2.mp3]
-[load name=voice01 path=../assets/voice01.mp3]
-[load name=voice02 path=../assets/voice02.mp3]
-[load name=voice03 path=../assets/voice03.mp3]
-[load name=voice04 path=../assets/voice04.mp3]
-[load name=voice05 path=../assets/voice05.mp3]
-[load name=voice06 path=../assets/voice06.mp3]
+[load name=voice01 path=assets/voice01.mp3]
+[load name=voice02 path=assets/voice02.mp3]
+[load name=voice03 path=assets/voice03.mp3]
+[load name=voice04 path=assets/voice04.mp3]
+[load name=voice05 path=assets/voice05.mp3]
+[load name=voice06 path=assets/voice06.mp3]
 
 // 背景を表示
 //[new name=bg type=tm.display.Sprite arg=bg originX=0 originY=0 width=465 height=465]
